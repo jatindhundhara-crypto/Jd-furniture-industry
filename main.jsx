@@ -94,13 +94,8 @@ Message: ${message}
 Please contact me regarding this enquiry.`
   );
 
-  setSent(true);
-
-  window.open(
-    `${WHATSAPP}?text=${text}`,
-    "_blank"
-  );
-
+  window.location.href = `${WHATSAPP}?text=${text}`;
+setSent(true);
   setTimeout(()=>setSent(false),4500);
 };
   };
