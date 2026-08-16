@@ -71,12 +71,38 @@ function App(){
     window.open(`${WHATSAPP}?text=${text}`,"_blank");
   };
   const submit=(e)=>{
-    e.preventDefault();
-    const fd=new FormData(e.currentTarget);
-    const text=encodeURIComponent(`*New Website Enquiry – JD Furniture Industry*\n\nName: ${fd.get("name")}\nPhone: ${fd.get("phone")}\nCity: ${fd.get("city")||"Not provided"}\nRequirement: ${fd.get("requirement")}\nMessage: ${fd.get("message")||"Not provided"}`);
-    setSent(true);
-    window.open(`${WHATSAPP}?text=${text}`,"_blank");
-    setTimeout(()=>setSent(false),4500);
+  e.preventDefault();
+
+  const fd=new FormData(e.currentTarget);
+
+  const name=fd.get("name") || "";
+  const phone=fd.get("phone") || "";
+  const city=fd.get("city") || "Not provided";
+  const requirement=fd.get("requirement") || "Furniture requirement";
+  const message=fd.get("message") || "Not provided";
+
+  const text=encodeURIComponent(
+`*NEW WEBSITE ENQUIRY*
+*JD Furniture Industry*
+
+Name: ${name}
+Phone: ${phone}
+City: ${city}
+Requirement: ${requirement}
+Message: ${message}
+
+Please contact me regarding this enquiry.`
+  );
+
+  setSent(true);
+
+  window.open(
+    `${WHATSAPP}?text=${text}`,
+    "_blank"
+  );
+
+  setTimeout(()=>setSent(false),4500);
+};
   };
   const submitReview=(e)=>{
     e.preventDefault();
