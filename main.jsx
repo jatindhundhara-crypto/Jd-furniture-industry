@@ -94,10 +94,13 @@ Message: ${message}
 Please contact me regarding this enquiry.`
   );
 
-  window.location.href = `${WHATSAPP}?text=${text}`;
-setSent(true);
-  setTimeout(()=>setSent(false),4500);
-};
+  setSent(true);
+
+const whatsappUrl = `https://wa.me/918005604653?text=${text}`;
+
+window.location.assign(whatsappUrl);
+
+setTimeout(() => setSent(false), 4500);
   };
   const submitReview=(e)=>{
     e.preventDefault();
